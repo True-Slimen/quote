@@ -3,22 +3,16 @@
 <section class="container">
         <div class="mt-4 mb-4" style="height:46px;">
             <?php 
-                if (isset($success)){
+                
+                if (isset($errContainer)){
+                    echo $errContainer;
                     
+
+                }if (isset($successContainer)){
+                    echo $successContainer;
                     
-                        $success;
-                    
-                    
-                }elseif (isset($errMessage)){
-            
-                    
-                        $errMessage;
-                    
-                 
                 }
-                // $_SESSION['success'] = " ";
-                // $_SESSION['err'] = " ";
-            ?>
+                ?>
         </div>
         <div class="jumbotron blur-bg row justify-content-between">
             <div class="col-md-5 col-sm-12">
@@ -26,7 +20,7 @@
                 <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis inventore animi distinctio et sequi, quo aut?</p>
                 <hr class="my-4">
             
-                <form action="./controller/controller.php" method="post">
+                <form action="../public/index.php?action=sign-in" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Votre identifiant" required>
                     </div>

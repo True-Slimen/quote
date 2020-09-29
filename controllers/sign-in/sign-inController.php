@@ -5,7 +5,7 @@ function processRequest(){
 
     require_once(__DIR__ . ('/../../src/database/database.php'));
 
-    //$loggedin = false;
+    $loggedin = false;
     
 // get fields value, if exist and not empty
 
@@ -32,15 +32,15 @@ function processRequest(){
             $loggedin = true;
         }else{
             $err = "Erreur dans les identifiants de connexion";
-            $errMessage = 
+            $errContainer = 
             '<div class="alert alert-dismissible alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p class="mb-0">' . $err . '</p>
             </div>';
-            $loggedin = false;
+            
         }   
 }$err = "Tout les champs doivent être remplis";
-    $errMessage = 
+    $errContainer = 
     '<div class="alert alert-dismissible alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <p class="mb-0">' . $err . '</p>

@@ -9,7 +9,6 @@
 ?>
 
 
-<?php $title = 'Accueil'; ?>
 <?php require_once(__DIR__ . '/partials/nav.php');?>
     <section class="container mt-5">
     <div class="jumbotron blur-bg">
@@ -63,4 +62,4 @@
     </section>
 <?php
 require_once(__DIR__ . '/partials/footer.php');
-?>
+
