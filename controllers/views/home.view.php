@@ -6,10 +6,10 @@
 //     echo $row;
    
 // }
+
+
+include(__DIR__ . ('/../views/partials/nav.php'));
 ?>
-
-
-<?php require_once(__DIR__ . '/partials/nav.php');?>
     <section class="container mt-5">
     <div class="jumbotron blur-bg">
         <h1 class="display-4">Bienvenue sur Citation !</h1>
@@ -24,19 +24,19 @@
     <section class="container mt-5">
         <h2 class="mb-4">Citations publiques</h2>
         <?php 
-                    for($i = 0; $i < count($arrayPublicQuote); $i++){
+                    for($i = 0; $i < count($viewDatas['datas']); $i++){
                        
                         echo 
                        '<div class="card mt-2 mb-2 blur-bg">
                   
                         <div class="card-header ml-0 mr-0 row justify-content-between">
-                            <h4 class="col-12">Citation partagé par '. $arrayPublicQuote[$i][0][2] .'</h4>
+                            <h4 class="col-12">Citation partagé par '. $viewDatas['datas'][$i]['username'] .'</h4>
                         
                         </div>
                         <div class="card-body bg-white">
                             <blockquote class="blockquote mb-0">
-                            <p>' . $arrayPublicQuote[$i][0][0] . '</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">' . $arrayPublicQuote[$i][0][1]  . '</cite></footer>
+                            <p>' . $viewDatas['datas'][$i]['content'] . '</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">' . $viewDatas['datas'][$i]['author'] . '</cite></footer>
                             </blockquote>
                         </div>
                     </div><br>'; 
@@ -61,5 +61,7 @@
         </div>
     </section>
 <?php
-require_once(__DIR__ . '/partials/footer.php');
+
+require(__DIR__ . ('/../views/partials/footer.php'));
+
 

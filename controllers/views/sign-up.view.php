@@ -1,5 +1,6 @@
-
-<?php require_once(__DIR__ . '/partials/nav.php');?>
+<?php
+include(__DIR__ . ('/../views/partials/nav.php'));
+?>
 
 <section class="container mt-5">
     <div class="row justify-content-between">
@@ -11,13 +12,8 @@
                     <div class="mt-4 mb-4" style="height:46px;">
 
                         <?php
-                        if (isset($errContainer)){
-                            echo $errContainer;
-                            
-
-                        }if (isset($successContainer)){
-                            echo $successContainer;
-                            
+                        if (isset($viewDatas['datas'])){
+                            echo $viewDatas['datas'][0];
                         }
                         ?>
                     </div>
@@ -64,4 +60,4 @@
     </div>
     </section>
 
-    <?php require_once(__DIR__ . '/partials/footer.php');?>
+    <?php include(__DIR__ . ('/../views/partials/footer.php'))?>

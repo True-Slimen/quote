@@ -4,7 +4,7 @@
 function processRequest(){
 
     require_once(__DIR__ . ('/../../src/database/database.php'));
-
+    
     // $viewDatas = [
     //     'title' => 'Mon titre',
     //     'datas' => [$resultSet] // from sql

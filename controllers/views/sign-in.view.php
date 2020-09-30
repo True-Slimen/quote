@@ -1,18 +1,14 @@
-<?php $title = 'Se connecter'; ?>
-<?php require_once(__DIR__ . '/partials/nav.php');?>
+<?php $title = 'Se connecter';
+include(__DIR__ . ('/../views/partials/nav.php'));
+?>
 <section class="container">
         <div class="mt-4 mb-4" style="height:46px;">
             <?php 
                 
-                if (isset($errContainer)){
-                    echo $errContainer;
-                    
-
-                }if (isset($successContainer)){
-                    echo $successContainer;
-                    
+                if (isset($viewDatas['datas'])){
+                    echo $viewDatas['datas'][0];
                 }
-                ?>
+            ?>
         </div>
         <div class="jumbotron blur-bg row justify-content-between">
             <div class="col-md-5 col-sm-12">
@@ -36,5 +32,5 @@
             <p class="mt-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus officiis modi ratione quis! Tempore, dolores voluptatum! Voluptatum dignissimos aliquam mollitia quos dolores quibusdam impedit placeat, maiores nemo numquam veniam assumenda.</p>
         </div>
     </section>
-<?php
-require_once(__DIR__ . '/partials/footer.php');
+    <?php
+include(__DIR__ . ('/../views/partials/footer.php'));

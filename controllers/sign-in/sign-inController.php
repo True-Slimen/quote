@@ -1,64 +1,35 @@
 <?php
-
+require_once(__DIR__ . ('/../../models/sign-inModel.php'));
+include(__DIR__ . ('/../../models/quoteModel.php'));
 
 function processRequest(){
-
-    require_once(__DIR__ . ('/../../src/database/database.php'));
-
-    $loggedin = false;
+    //require_once(__DIR__ . ('/../../src/database/database.php'));
     
-// get fields value, if exist and not empty
-
-    if((!empty($_POST['name']) && !empty($_POST['password']))){
-    $identifiant = htmlspecialchars($_POST['name']);
-    $prefixe = 'solide96*';
-    $pass = $_POST['password']. $prefixe;
-    $hashedpass = hash('sha512', $pass);
+    $viewDatas = [
+        'title' => 'Se connecter',
+        'datas' => connectUser()
+    ];
     
-        $reqIdPass = $debate->prepare("SELECT * FROM redactor WHERE username = ? AND password = ?");
+    //print_r($viewDatas['datas']);
+    if(!empty($viewDatas['datas'][1]) && $viewDatas['datas'][1] == 1){
+        $loggedin = $viewDatas['datas'][1];
         
-        $reqIdPass->execute(array($identifiant, $hashedpass));
-        $identifiantExist = $reqIdPass->rowCount();
+        $_SESSION['userId'] = $viewDatas['datas'][2];
+        $userId = $viewDatas['datas'][2];
 
-        while($userId = $reqIdPass->fetch()){
-            $result = $userId['id'];
-        }
+        $quoteDatas = [
+            'datas' => personnalQuote()
+        ];
 
-        if($identifiantExist == 1){
-            $identifiantHTML = $identifiant;
-
-            $userId = intval($result);
-              
-            $loggedin = true;
-        }else{
-            $err = "Erreur dans les identifiants de connexion";
-            $errContainer = 
-            '<div class="alert alert-dismissible alert-danger">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <p class="mb-0">' . $err . '</p>
-            </div>';
-            
-        }   
-}$err = "Tout les champs doivent être remplis";
-    $errContainer = 
-    '<div class="alert alert-dismissible alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <p class="mb-0">' . $err . '</p>
-    </div>';
-
-
-    // $viewDatas = [
-    //     'title' => 'Mon titre',
-    //     'datas' => [$resultSet] // from sql
-    // ];
-
-    if($loggedin == true){
         ob_start();
         $view = include(__DIR__ . '/../views/user/pannel.view.php');
         ob_get_contents();
         return $view;
         ob_end_clean();
-    }else if($loggedin == false){
+    
+    }else{
+        $loggedin = 0;
+    
         ob_start();
         $view = include(__DIR__ . '/../views/sign-in.view.php');
         ob_get_contents();

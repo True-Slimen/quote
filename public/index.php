@@ -7,6 +7,8 @@ index requiert le contrôleur (require_once('homeController.php')
 index récupère cette variable
 index echo la variable -->
 <?php
+session_start();
+
 $urlValue = $_GET['action'];
 
 
@@ -14,6 +16,5 @@ $controller = array_key_exists('action', $_GET) ? $_GET['action'] : $urlValue;
 $controllerFile = '../controllers/' . $controller . '/' . $controller . 'Controller.php';
 require_once($controllerFile);
 $view = processRequest();
-
 
 echo $view;
