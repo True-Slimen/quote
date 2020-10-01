@@ -22,5 +22,5 @@ if(isset($debate)){
     $resultSet = ' true';
     // echo 'true';
 }else{
-    $resultSet = 'false';
+    //$resultSet = 'false';
 }
