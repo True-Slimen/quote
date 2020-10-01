@@ -5,7 +5,7 @@ function manageQuote(){
 
     if(isset($_POST['publish'])){
         $quoteId = htmlspecialchars($_POST['publish']);
-        echo 'publiée';
+
     
         $publishQuote = $debate->exec("UPDATE quote SET public = true WHERE id = $quoteId");
     
@@ -14,20 +14,17 @@ function manageQuote(){
     
     }else if(isset($_POST['dispublish'])){
         $quoteId = htmlspecialchars($_POST['dispublish']);
-        echo 'dépubliée';
+
     
         $dispublishQuote = $debate->exec("UPDATE quote SET public = false WHERE id = $quoteId");
     
         $deletePublicQuote = $debate->exec("DELETE FROM public_quote WHERE quote_id = $quoteId");
-        
-        
-    
+           
     }else if(isset($_POST['removeQuote'])){
         $quoteId = htmlspecialchars($_POST['removeQuote']);
-        echo 'delete';
+
     
         $deleteQuote = $debate->exec("DELETE FROM quote WHERE id = $quoteId");
-        
     }
 
     $userId = $_SESSION['userId'];
@@ -126,36 +123,40 @@ function personnalQuote(){
 
     $userId = $_SESSION['userId'];
     //WHERE role_user.redactor_id = $userId
-        $getUserRole = $debate->query("SELECT role_user.role_user_state, redactor.username 
+        $getUserRole = $debate->prepare("SELECT role_user.role_user_state, redactor.username 
         FROM role_user
         JOIN redactor ON role_user.redactor_id = redactor.id
         WHERE role_user.redactor_id = $userId
-        
         ");
+
+        $getUserRole-> execute();
+
         while($userRole = $getUserRole->fetch()){
             $userName = $userRole['username'];
             $userRole = $userRole['role_user_state'];
-            array_push($arrayPersonnalQuote, $userName);
+            array_push($arrayPersonnalQuote, $userName, $userRole);
         }
+        $userRole = $arrayPersonnalQuote[1];
 
-     if($userRole == 1){
-        // $userRoleState = 1;
+        if($userRole == 1){
+            
+            $arrayAllQuote = [];
+            $getAllQuote = $debate->prepare("SELECT quote.id, quote.content, quote.author, quote.create_at, quote.public, redactor.username FROM quote
+            JOIN redactor ON quote.redactor_id = redactor.id 
+            ");
 
-        $arrayAllQuote = [];
-        $getAllQuote = $debate->prepare("SELECT quote.id, quote.content, quote.author, quote.create_at, quote.public, redactor.username FROM quote
-        JOIN redactor ON quote.redactor_id = redactor.id 
-        ");
+            $getAllQuote->execute();
 
-        $getAllQuote->execute();
+            while($allQuote = $getAllQuote->fetch()){
+            array_push($arrayPersonnalQuote, $allQuote);
+            }
+            if($arrayPersonnalQuote){
+            $status = $arrayPersonnalQuote[0][[4][0]];
+            }
 
-        while($allQuote = $getAllQuote->fetch()){
-           array_push($arrayPersonnalQuote, $allQuote);
-        }
-        if($arrayPersonnalQuote){
-         $status = $arrayPersonnalQuote[0][[4][0]];
-        }
-        
-    }else{
+            
+
+        }else{
        
         $getPersonnalQuote = $debate->query("SELECT id, content, author, create_at, public FROM quote WHERE redactor_id = '$userId'");
 

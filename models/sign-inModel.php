@@ -30,26 +30,27 @@ function connectUser(){
 
                 $updtateConenctedStatus = $debate->exec("UPDATE redactor SET connected_status = 1 WHERE id = $userId");
                 $connectedStatus = 1;
-                array_push($arrayUserDatas, $connectedStatus);
+
+                $messageContainer = 
+                '<div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p class="mb-0">Connexion réussie</p>
+                </div>';
+
+                array_push($arrayUserDatas, $messageContainer, $connectedStatus);
+
             }else{
                 $err = "Erreur dans les identifiants de connexion";
-              
-    }if($loggedin == 1){
-        $successContainer = 
-        '<div class="alert alert-dismissible alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <p class="mb-0">Connexion réussie</p>
-        </div>';
-        array_push($arrayUserDatas, $successContainer);
-    }else if(isset($err)){
-        $errContainer = 
-        '<div class="alert alert-dismissible alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <p class="mb-0">' . $err . '</p>
-        </div>';  
-        array_push($arrayUserDatas, $errContainer);
-    }
- }
-    array_push($arrayUserDatas, $loggedin, $userId);
-    return $arrayUserDatas; 
+                $messageContainer = 
+                '<div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p class="mb-0">' . $err . '</p>
+                </div>';  
+
+                array_push($arrayUserDatas, $messageContainer);
+            }
+            
+            array_push($arrayUserDatas, $loggedin, $userId);
+            return $arrayUserDatas; 
+        }
 }

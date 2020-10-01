@@ -2,14 +2,11 @@
 require(__DIR__ . ('/../../models/quoteModel.php'));
 require(__DIR__ . ('/../../models/userModel.php'));
 
-function processRequest()
-{
-
-
+function processRequest(){
+    
         $connectedStatus = connectedStatus(); // from sql
         $connectedStatus = $connectedStatus[0];
         
-        echo 'connected status : ' . $connectedStatus[0];
 
         if(isset($connectedStatus) && $connectedStatus[0] == 1){
 

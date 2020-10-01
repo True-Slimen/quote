@@ -1,11 +1,14 @@
 <?php $title = 'Se connecter';
 include(__DIR__ . ('/../views/partials/nav.php'));
+// echo '<pre>';
+// print_r($viewDatas['datas']);
+// echo '</pre>';
 ?>
 <section class="container">
         <div class="mt-4 mb-4" style="height:46px;">
             <?php 
                 
-                if (isset($viewDatas['datas'])){
+                if (isset($viewDatas['datas'][0])){
                     echo $viewDatas['datas'][0];
                 }
             ?>

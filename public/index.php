@@ -17,4 +17,4 @@ $controllerFile = '../controllers/' . $controller . '/' . $controller . 'Control
 require_once($controllerFile);
 $view = processRequest();
 
-echo $view;
+//echo $view;

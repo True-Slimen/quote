@@ -19,15 +19,14 @@
  </button>
  <div class="collapse navbar-collapse" id="navbarText">
    <div class="col-md-8 col-sm-12 mr-auto">
-   <a class="lien_a" href="index.php?action=home"><button class="btn btn-outline-dark" type="button">Accueil</button></a>
+   <a class="lien_a" href="index.php?action=home"><button class="btn btn-outline-dark btn-animate" type="button">Accueil</button></a>
    <?php 
            if(isset($connectedStatus) && $connectedStatus == 1){
-              echo '<a class="lien_a" href="index.php?action=user"><button class="btn btn-dark" type="button">Se déconnecter</button></a>';
-              echo '<a class="lien_a" href="index.php?action=pannel"><button class="btn btn-outline-dark" type="button">Mon compte</button></a>';  
+              echo '<a class="lien_a" href="index.php?action=pannel"><button class="btn btn-outline-dark btn-animate" type="button">Mon compte</button></a>';  
                
            }else{
                echo '<a class="lien_a" href="index.php?action=sign-up"><button class="btn btn-outline-dark" type="button">S\'inscrire</button></a>';
-              echo '<a class="lien_a" href="index.php?action=sign-in"><button class="btn btn-outline-dark" type="button">Se connecter</button></a>';
+              echo '<a class="lien_a" href="index.php?action=sign-in"><button class="btn btn-outline-dark btn-animate" type="button">Se connecter</button></a>';
           }    
       ?>
    </div>
@@ -37,10 +36,10 @@
    <span class="col-md-4 col-sm-12 text-right navbar-text">
    <?php 
            if(isset($connectedStatus) && $connectedStatus == 1){
-                
+              echo '<a class="lien_a" href="index.php?action=user"><button class="btn btn-outline-danger btn-animate" type="button">Se déconnecter</button></a>';
            }   
        ?>
-       <a class="lien_a" href="index.php?action=help"><button class="btn btn-outline-success" type="button">Aide</button></a>
+       <a class="lien_a" href="index.php?action=help"><button class="btn btn-outline-success btn-animate" type="button">Aide</button></a>
    </span>
  </div>
 </nav>

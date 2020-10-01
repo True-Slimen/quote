@@ -32,7 +32,7 @@ strong{
     }
 }
 
-.btn{
+.btn-animate{
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -44,7 +44,7 @@ strong{
 }
 
 
-.btn:before {
+.btn-animate:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -63,7 +63,15 @@ strong{
     background: #383736;
   }
 
-  .btn:hover:before {
+  .btn-outline-success:before {
+    background: #02b875;
+  }
+
+  .btn-outline-danger:before {
+    background: #d9534f
+  }
+
+  .btn-animate:hover:before {
     top: 0;
   }
 

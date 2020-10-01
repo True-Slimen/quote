@@ -3,9 +3,9 @@ include(__DIR__ . ('/../partials/nav.php'));
 
 
 $arrayPersonnalQuote = $quoteDatas['datas'];
-echo '<pre>';
-//print_r($arrayPersonnalQuote);
-echo '</pre>';
+// echo '<pre>';
+// print_r($arrayPersonnalQuote);
+// echo '</pre>';
 ?>
 
 <div class="container-fluid">
@@ -71,33 +71,34 @@ echo '</pre>';
                 <div class="personnal-quote-frame jumbotron">
                 <?php 
 
-                // if($arrayPersonnalQuote[0]['userRole'] == 1){
-                //     for($x = 0; $x < count($arrayPersonnalQuote); $x++){
-                //        $status = $arrayPersonnalQuote[$x][0];
-                //        $quoteId = $arrayPersonnalQuote[$x][0];
-                //         echo 
-                //        '<div class="card mt-2 mb-2 blur-bg">
-                //         <div class="card-header ml-0 mr-0 row justify-content-between">
-                //             <h4 class="col-md-7 col-sm-5">Citation</h4>
-                //             <form action="./model/manageQuote.php" class="col-md-5 col-sm-6 pr-0 row justify-content-between" method="post">';
-                //             if( $status == false){
-                //                 echo '<button type="submit" name="publish" value="'.$arrayPersonnalQuote[$x][0] .'" class="btn btn-outline-success col-xs-12">Publier</button>';
-                //             }else{
-                //                 echo '<button type="submit" name="dispublish" value="'.$arrayPersonnalQuote[$x][0] .'" class="btn btn-outline-success col-xs-12">Ne plus publier</button>';
-                //             }
-                //             echo'
-                //             <button type="submit" value="'.$arrayPersonnalQuote[$x][0] .'"  name="removeQuote" class="btn btn-outline-danger col-xs-12">X</button>
-                //             </form>
-                //         </div>
-                //         <div class="card-body bg-white">
-                //             <blockquote class="blockquote mb-0">
-                //             <p>' . $arrayPersonnalQuote[$x][1] . '</p>
-                //             <footer class="blockquote-footer"><cite title="Source Title">' . $arrayPersonnalQuote[$x][[2][0]] . '</cite></footer>Partagé par  ' . $arrayPersonnalQuote[$x][0] . '
-                //             </blockquote>
-                //         </div>
-                //     </div><br>'; 
-                //     }
-                if($toto = true){
+                if($arrayPersonnalQuote[1]== 1){
+;                    for($x = 2; $x < count($arrayPersonnalQuote); $x++){
+
+                       $status = $arrayPersonnalQuote[$x]['public'];
+                       $quoteId = $arrayPersonnalQuote[$x]['id'];
+                        echo 
+                       '<div class="card mt-2 mb-2 blur-bg">
+                        <div class="card-header ml-0 mr-0 row justify-content-between">
+                            <h4 class="col-md-7 col-sm-5">Citation</h4>
+                            <form action="../public/index.php?action=pannel" class="col-md-5 col-sm-6 pr-0 row justify-content-between" method="post">';
+                            if( $status == false){
+                                echo '<button type="submit" name="publish" value="'.$quoteId .'" class="btn btn-outline-success col-xs-12">Publier</button>';
+                            }else{
+                                echo '<button type="submit" name="dispublish" value="'.$quoteId .'" class="btn btn-outline-success col-xs-12">Ne plus publier</button>';
+                            }
+                            echo'
+                            <button type="submit" value="'.$quoteId .'"  name="removeQuote" class="btn btn-outline-danger col-xs-12">X</button>
+                            </form>
+                        </div>
+                        <div class="card-body bg-white">
+                            <blockquote class="blockquote mb-0">
+                            <p>' . $arrayPersonnalQuote[$x][1] . '</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">' . $arrayPersonnalQuote[$x][[2][0]] . '</cite></footer>Partagé par  ' . $arrayPersonnalQuote[$x]['username'] . '
+                            </blockquote>
+                        </div>
+                    </div><br>'; 
+                    }
+                }else{
 
                     for($i = 1; $i < count($arrayPersonnalQuote); $i++){
                        
@@ -124,7 +125,7 @@ echo '</pre>';
                 
             </div>
         </div>
-            <a class="btn btn-dark" href="index.php?action=sign-out" role="button">Se déconnecter</a>
+            <a class="btn btn-outline-danger btn-animate" href="index.php?action=user" role="button">Se déconnecter</a>
         </p>
         </div>
     </div>
