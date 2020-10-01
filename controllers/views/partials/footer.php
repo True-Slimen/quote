@@ -9,19 +9,19 @@
                     </li>
                     <li>
                     <?php 
-                        if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-                            echo '<a class="lien_a" href="index.php?action=sign-out">Se déconnecter</a>';
+                        if(isset($connectedStatus) && $connectedStatus == 1){
+                            echo '<a class="lien_a" href="index.php?action=user">Se déconnecter</a>';
                             
                         }else{
                             echo '<a class="lien_a" href="index.php?action=sign-up">S\'inscrire</a>';
-                            echo '<a class="lien_a" href="index.php?action=sign-in">Se connecter</a>';
+                            echo '<a class="lien_a" href="index.php?action=user">Se connecter</a>';
                         }    
                     ?>
                     </li>
                     <li>
                     <?php 
-                        if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-                            echo '<a class="lien_a" href="index.php?action=userHome">Mon compte</a>';   
+                        if(isset($connectedStatus) && $connectedStatus == 1){
+                            echo '<a class="lien_a" href="index.php?action=pannel">Mon compte</a>';   
                         }   
                     ?>
                     </li>

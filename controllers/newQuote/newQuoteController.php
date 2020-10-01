@@ -1,10 +1,12 @@
 <?php
-require_once(__DIR__ . ('/../../models/quoteModel.php'));
+include(__DIR__ . ('/../../models/quoteModel.php'));
 
 function processRequest()
 {
+    
+
     $viewDatas = [
-        'title' => 'Mon titre',
+        'title' => 'panneau',
         'datas' => personnalQuote() // from sql
     ];
 

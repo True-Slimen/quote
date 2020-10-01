@@ -17,7 +17,7 @@ include(__DIR__ . ('/../views/partials/nav.php'));
         <hr class="my-4">
         <p>N'hésitez pas à nous rejoindre et laisser votre pierre à l'édifice.</p>
         <p class="lead">
-            <a class="btn btn-outline-info" href="index.php?controller=sign-up" role="button">Inscrivez-vous !</a>
+            <a class="btn btn-outline-info" href="index.php?action=sign-up" role="button">Inscrivez-vous !</a>
         </p>
     </div>
     </section>

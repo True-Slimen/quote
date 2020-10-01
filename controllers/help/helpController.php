@@ -1,5 +1,4 @@
 <?php
-include(__DIR__ . ('/../../models/quoteModel.php'));
 include(__DIR__ . ('/../../models/userModel.php'));
 
 function processRequest()
@@ -8,12 +7,11 @@ function processRequest()
     $connectedStatus = $connectedStatus[0];
 
     $viewDatas = [
-        'title' => 'Accueil',
-        'datas' => publicQuote() // from sql
+        'title' => 'Aide',
     ];
 
     ob_start();
-    $view = include(__DIR__ . '/../views/home.view.php');
+    $view = include(__DIR__ . '/../views/help.view.php');
     ob_get_contents();
     return $view;
     //ob_end_clean();

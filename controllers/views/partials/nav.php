@@ -21,8 +21,9 @@
    <div class="col-md-8 col-sm-12 mr-auto">
    <a class="lien_a" href="index.php?action=home"><button class="btn btn-outline-dark" type="button">Accueil</button></a>
    <?php 
-           if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-              echo '<a class="lien_a" href="index.php?action=sign-out"><button class="btn btn-dark" type="button">Se déconnecter</button></a>';
+           if(isset($connectedStatus) && $connectedStatus == 1){
+              echo '<a class="lien_a" href="index.php?action=user"><button class="btn btn-dark" type="button">Se déconnecter</button></a>';
+              echo '<a class="lien_a" href="index.php?action=pannel"><button class="btn btn-outline-dark" type="button">Mon compte</button></a>';  
                
            }else{
                echo '<a class="lien_a" href="index.php?action=sign-up"><button class="btn btn-outline-dark" type="button">S\'inscrire</button></a>';
@@ -35,9 +36,9 @@
 
    <span class="col-md-4 col-sm-12 text-right navbar-text">
    <?php 
-        //    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-        //        echo '<a class="lien_a" href="index.php?action=userHome"><button class="btn btn-outline-dark" type="button">Mon compte</button></a>';   
-        //    }   
+           if(isset($connectedStatus) && $connectedStatus == 1){
+                
+           }   
        ?>
        <a class="lien_a" href="index.php?action=help"><button class="btn btn-outline-success" type="button">Aide</button></a>
    </span>

@@ -12,9 +12,6 @@ function manageQuote(){
         $postPublicQuote = $debate->prepare("INSERT INTO public_quote(quote_id) VALUES(?)");
         $postPublicQuote->execute(array($quoteId));
     
-        header("Location: ../index.php?action=userHome");
-        exit;
-    
     }else if(isset($_POST['dispublish'])){
         $quoteId = htmlspecialchars($_POST['dispublish']);
         echo 'dépubliée';
@@ -33,6 +30,74 @@ function manageQuote(){
         
     }
 
+    $userId = $_SESSION['userId'];
+
+    $getUserName = $debate->prepare("SELECT username FROM redactor WHERE id = $userId");
+
+    $getUserName->execute();
+    while($username = $getUserName->fetch()){
+        $currentUsername = $username;
+    }
+    return $currentUsername;
+}
+
+function addQuote(){
+    include(__DIR__ . ('/../src/database/database.php'));
+
+    
+        $content = htmlspecialchars($_POST['content']);
+        $author = htmlspecialchars($_POST['author']);
+        
+        if(!empty($_POST['content'] AND !empty($_POST['author']))){
+
+            $userId = $_SESSION['userId'];
+
+            $getUserName = $debate->prepare("SELECT username FROM redactor WHERE id = $userId");
+
+            $getUserName->execute();
+
+        while($username = $getUserName->fetch()){
+              $currentUsername = $username;
+        }
+    
+                if(isset($_POST['public-check'])){
+                    $public = true;
+                }else{
+                    $public = false;
+                }
+    
+                $userId = $_SESSION['userId'];
+                
+                $postQuote = $debate->prepare("INSERT INTO quote(content, author, public, redactor_id) VALUES(?, ?, ?, ?)");
+                $postQuote->execute(array($content, $author, $public,$userId));
+    
+                $quoteId = $debate->lastInsertId();
+                if($public == true){
+            
+                    $postPublicQuote = $debate->prepare("INSERT INTO public_quote(quote_id) VALUES(?)");
+                    $postPublicQuote->execute(array($quoteId));
+               
+                }
+    
+                $quoteAdded = 1;
+                
+                $message = 'Citation ajoutée';
+                $messageContainer =
+                '<div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p class="mb-0">' . $message . '</p>
+                </div>';
+
+    
+        }$message = "Tout les champs doivent être remplis";
+        $messageContainer = 
+        '<div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p class="mb-0">' . $message . '</p>
+        </div>';
+
+        return $messageContainer;
+    
 }
 
 function publicQuote(){
@@ -60,7 +125,6 @@ function personnalQuote(){
     $arrayPersonnalQuote = [];
 
     $userId = $_SESSION['userId'];
-    echo $userId;
     //WHERE role_user.redactor_id = $userId
         $getUserRole = $debate->query("SELECT role_user.role_user_state, redactor.username 
         FROM role_user
@@ -71,7 +135,7 @@ function personnalQuote(){
         while($userRole = $getUserRole->fetch()){
             $userName = $userRole['username'];
             $userRole = $userRole['role_user_state'];
-                
+            array_push($arrayPersonnalQuote, $userName);
         }
 
      if($userRole == 1){
@@ -116,12 +180,11 @@ function personnalQuote(){
                     ['author' => $author], 
                     ['create_at' => $create_at],
                     ['userRole' => 0],
-                    ['username' => $userName]
+                    
                     ]);
             }
             
           }
-          //echo 'le rooolle' . $arrayPersonnalQuote[0];
-          //print_r($arrayPersonnalQuote);
+
     return $arrayPersonnalQuote;
 }

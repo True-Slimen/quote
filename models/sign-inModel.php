@@ -27,6 +27,10 @@ function connectUser(){
                 $identifiantHTML = $identifiant;
                 $loggedin = 1;
                 $userId = intval($result);
+
+                $updtateConenctedStatus = $debate->exec("UPDATE redactor SET connected_status = 1 WHERE id = $userId");
+                $connectedStatus = 1;
+                array_push($arrayUserDatas, $connectedStatus);
             }else{
                 $err = "Erreur dans les identifiants de connexion";
               

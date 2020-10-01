@@ -4,7 +4,7 @@ include(__DIR__ . ('/../partials/nav.php'));
 
 $arrayPersonnalQuote = $quoteDatas['datas'];
 echo '<pre>';
-print_r($arrayPersonnalQuote);
+//print_r($arrayPersonnalQuote);
 echo '</pre>';
 ?>
 
@@ -23,12 +23,14 @@ echo '</pre>';
     </div>
     <div class=" pannel-container col-12 col-md-10">
         <h1 class="display-4">Bienvenue sur votre pannel
-            <?php 
-                
+            <?php                 
                          echo '<strong class="username">';
-                         echo $arrayPersonnalQuote[0][7]['username'];
-                         echo '</strong>';
-                    
+                         if(isset($username[0])){
+                            echo $username[0];
+                         }else{
+                             echo $arrayPersonnalQuote[0];
+                         }
+                         echo '</strong>';                  
                     ?>
                 </h1>
         <p class="lead">
@@ -41,7 +43,7 @@ echo '</pre>';
         <div class="row">
             <div class="col-12 col-md-6 border-right">
                 <h3>Nouvelle citation</h3>
-                <form action="../public/index.php?action=newQuote" method="post">
+                <form action="../public/index.php?action=pannel" method="post">
                     <div class="form-group">
                         <textarea  rows="4" class="form-control" name="content" id="content" required>Votre citation</textarea> 
                     </div>
@@ -55,21 +57,11 @@ echo '</pre>';
                     <button type="submit" name="newQuote" class="btn btn-info mt-4">Ajouter</button>
                     <div class="mt-4 mb-4" style="height:46px;">
             <?php 
-                if (isset($_SESSION['success'])){
-                    ?>
-                    
-                        <?php echo $_SESSION['success'] ?>
-                    
-                    <?php
-                }if (isset($_SESSION['err'])){
-                    ?>
-                    
-                        <?php echo ($_SESSION['err']) ?>
-                    
+                if (isset($messageContainer)){
+                    ?>            
+                        <?php echo $messageContainer ?>                
                     <?php
                 }
-                $_SESSION['success'] = " ";
-                $_SESSION['err'] = " ";
             ?>
         </div>
                 </form>
@@ -107,14 +99,14 @@ echo '</pre>';
                 //     }
                 if($toto = true){
 
-                    for($i = 0; $i < count($arrayPersonnalQuote); $i++){
+                    for($i = 1; $i < count($arrayPersonnalQuote); $i++){
                        
                         echo 
                        '<div class="card mt-2 mb-2 blur-bg">
                   
                         <div class="card-header ml-0 mr-0 row justify-content-between">
                             <h4 class="col-md-7 col-sm-5">Citation</h4>
-                            <form action="../public/index.php?action=newQuote" class="col-md-5 col-sm-6 pr-0 row justify-content-between" method="post">'. $arrayPersonnalQuote[$i][2]['button'] .'
+                            <form action="../public/index.php?action=pannel" class="col-md-5 col-sm-6 pr-0 row justify-content-between" method="post">'. $arrayPersonnalQuote[$i][2]['button'] .'
                             <button type="submit" value="'.$arrayPersonnalQuote[$i][0]['quoteId'] .'"  name="removeQuote" class="btn btn-outline-danger">X</button>
                             </form>
                         </div>

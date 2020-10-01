@@ -3,7 +3,7 @@ $serverName = "localhost";
 $dbName = "citationdb";
 $username = "root";
 $dbPassword = "";
-// $debate;
+
 //tentative de connexion
 try{
     $debate = new PDO("mysql:host=$serverName;dbname=$dbName;charset=utf8", $username, $dbPassword);
@@ -20,7 +20,7 @@ try{
 
 if(isset($debate)){
     $resultSet = ' true';
-    echo 'true';
+    // echo 'true';
 }else{
     $resultSet = 'false';
 }

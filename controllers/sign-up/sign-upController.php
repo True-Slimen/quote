@@ -2,7 +2,7 @@
 require_once(__DIR__ . ('/../../models/sign-upModel.php'));
 
 function processRequest(){
-    require_once(__DIR__ . ('/../../src/database/database.php'));
+    require(__DIR__ . ('/../../src/database/database.php'));
 
     $viewDatas = [
         'title' => 'S\'inscrire',
