@@ -1,13 +1,4 @@
 <?php 
-
-// echo $viewDatas['title'];
-
-// foreach ($viewDatas['datas'] as $row){
-//     echo $row;
-   
-// }
-
-
 include(__DIR__ . ('/../views/partials/nav.php'));
 ?>
     <section class="container mt-5">

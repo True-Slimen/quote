@@ -13,8 +13,8 @@ function processRequest()
     ];
 
     ob_start();
-    $view = include(__DIR__ . '/../views/home.view.php');
-    ob_get_contents();
+        include(__DIR__ . '/../views/home.view.php');
+    $view = ob_get_contents();
+    ob_end_clean();
     return $view;
-    //ob_end_clean();
 }

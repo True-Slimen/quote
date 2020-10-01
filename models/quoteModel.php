@@ -5,13 +5,20 @@ function manageQuote(){
 
     if(isset($_POST['publish'])){
         $quoteId = htmlspecialchars($_POST['publish']);
+       //$quoteId = intval($quoteId);
 
+        $reqPublishQuote = $debate->prepare("SELECT quote_id FROM public_quote WHERE quote_id = ?");
+            
+            $reqPublishQuote->execute(array($quoteId));
+            $quotePublicExist = $reqPublishQuote->rowCount();
     
-        $publishQuote = $debate->exec("UPDATE quote SET public = true WHERE id = $quoteId");
-    
-        $postPublicQuote = $debate->prepare("INSERT INTO public_quote(quote_id) VALUES(?)");
-        $postPublicQuote->execute(array($quoteId));
-    
+            if($quotePublicExist == 0){
+                $publishQuote = $debate->exec("UPDATE quote SET public = true WHERE id = $quoteId");
+
+                $postPublicQuote = $debate->prepare("INSERT INTO public_quote(quote_id) VALUES(?)");
+                $postPublicQuote->execute(array($quoteId));
+            }
+            
     }else if(isset($_POST['dispublish'])){
         $quoteId = htmlspecialchars($_POST['dispublish']);
 
@@ -73,7 +80,7 @@ function addQuote(){
             
                     $postPublicQuote = $debate->prepare("INSERT INTO public_quote(quote_id) VALUES(?)");
                     $postPublicQuote->execute(array($quoteId));
-               
+                    
                 }
     
                 $quoteAdded = 1;

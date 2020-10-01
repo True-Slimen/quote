@@ -21,17 +21,17 @@ function processRequest(){
 
         if($loggedAuth == 1){
             ob_start();
-            $view = include(__DIR__ . '/../views/sign-in.view.php');
-            ob_get_contents();
+                include(__DIR__ . '/../views/sign-in.view.php');
+            $view = ob_get_contents();
+            ob_end_clean();   
             return $view;
-            ob_end_clean();
         }else if($loggedAuth == 0)
-            ob_start();
-            $view = include(__DIR__ . '/../views/sign-up.view.php');
-            ob_get_contents();
-            return $view;
-            ob_end_clean();
-        
+        ob_start();
+            include(__DIR__ . '/../views/sign-up.view.php');
+        $view = ob_get_contents();
+        ob_end_clean();   
+        return $view;
+            
     
         
     

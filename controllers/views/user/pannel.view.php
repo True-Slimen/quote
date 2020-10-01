@@ -100,7 +100,7 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                     }
                 }else{
 
-                    for($i = 1; $i < count($arrayPersonnalQuote); $i++){
+                    for($i = 2; $i < count($arrayPersonnalQuote); $i++){
                        
                         echo 
                        '<div class="card mt-2 mb-2 blur-bg">

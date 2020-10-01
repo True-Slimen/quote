@@ -13,12 +13,13 @@
                             echo '<a class="lien_a" href="index.php?action=user">Se déconnecter</a>';
                             
                         }else{
-                            echo '<a class="lien_a" href="index.php?action=sign-up">S\'inscrire</a>';
-                            echo '<a class="lien_a" href="index.php?action=user">Se connecter</a>';
+                            echo '<li><a class="lien_a" href="index.php?action=sign-up">S\'inscrire</a></li>';
+
+                            echo '<li><a class="lien_a" href="index.php?action=user">Se connecter</a></li>';
                         }    
                     ?>
-                    </li>
-                    <li>
+                    
+                    
                     <?php 
                         if(isset($connectedStatus) && $connectedStatus == 1){
                             echo '<a class="lien_a" href="index.php?action=pannel">Mon compte</a>';   

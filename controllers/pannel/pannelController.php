@@ -3,7 +3,7 @@ require(__DIR__ . ('/../../models/quoteModel.php'));
 require(__DIR__ . ('/../../models/userModel.php'));
 
 function processRequest(){
-    
+
         $connectedStatus = connectedStatus(); // from sql
         $connectedStatus = $connectedStatus[0];
         
@@ -22,18 +22,16 @@ function processRequest(){
             ];
 
             ob_start();
-            $view = include(__DIR__ . '/../views/user/pannel.view.php');
-            ob_get_contents();
+                include(__DIR__ . '/../views/user/pannel.view.php');
+            $view = ob_get_contents();
+            ob_end_clean();   
             return $view;
-            //ob_end_clean();
 
         }else{
             ob_start();
-            $view = include(__DIR__ . '/../views/sign-in.view.php');
-            ob_get_contents();
+                include(__DIR__ . '/../views/sign-in.view.php');
+            $view = ob_get_contents();
+            ob_end_clean();   
             return $view;
-            //ob_end_clean();
         }
-
-    
 }
