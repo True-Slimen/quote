@@ -47,22 +47,28 @@ function manageQuote(){
 
 function addQuote(){
     include(__DIR__ . ('/../src/database/database.php'));
-
-    
-        $content = htmlspecialchars($_POST['content']);
-        $author = htmlspecialchars($_POST['author']);
         
         if(!empty($_POST['content'] AND !empty($_POST['author']))){
 
+            function dataValid($userData){
+                $userData = trim($userData);
+                $userData = stripslashes($userData);
+                $userData = htmlspecialchars($userData);
+                return $userData;
+            }
+    
+            $content = dataValid($_POST['content']);
+            $author = dataValid($_POST['author']);
+
             $userId = $_SESSION['userId'];
 
-            $getUserName = $debate->prepare("SELECT username FROM redactor WHERE id = $userId");
+        //     $getUserName = $debate->prepare("SELECT username FROM redactor WHERE id = $userId");
 
-            $getUserName->execute();
+        //     $getUserName->execute();
 
-        while($username = $getUserName->fetch()){
-              $currentUsername = $username;
-        }
+        // while($username = $getUserName->fetch()){
+        //       $currentUsername = $username;
+        // }
     
                 if(isset($_POST['public-check'])){
                     $public = true;
@@ -93,13 +99,14 @@ function addQuote(){
                 </div>';
 
     
-        }$message = "Tout les champs doivent être remplis";
-        $messageContainer = 
-        '<div class="alert alert-dismissible alert-danger">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <p class="mb-0">' . $message . '</p>
-        </div>';
-
+        }else{
+            $message = "Tout les champs doivent être remplis";
+            $messageContainer = 
+            '<div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p class="mb-0">' . $message . '</p>
+            </div>';
+        }
         return $messageContainer;
     
 }
@@ -172,7 +179,12 @@ function fillDataBase(){
         $setUserRole = $debate->prepare("INSERT INTO role_user(role_user_state, redactor_id) VALUES(?, ?)");
         $setUserRole->execute(array($role,$userId));
 
-        $public = random_int(0, 1);
+        $public = random_int(0, 50);
+        if($public < 25){
+            $public = 0;
+        }else{
+            $public = 1;
+        }
 
         $postQuote = $debate->prepare("INSERT INTO quote(content, author, public, redactor_id) VALUES(?, ?, ?, ?)");
         $postQuote->execute(array(

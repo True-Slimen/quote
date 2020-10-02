@@ -11,9 +11,13 @@ function processRequest(){
 
             $_SESSION['userId'];
             $username = manageQuote();
+            
 
             if(isset($_POST['newQuote'])){
-            addQuote();
+            
+                $quoteMessage = [
+                    'message' => addQuote()
+                ];
             }
 
             if(isset($_POST['fillDatabase'])){

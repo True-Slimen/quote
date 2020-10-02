@@ -4,7 +4,7 @@ include(__DIR__ . ('/../partials/nav.php'));
 
 $arrayPersonnalQuote = $quoteDatas['datas'];
 //  echo '<pre>';
-//  print_r($arrayPersonnalQuote);
+//  print_r($quoteMessage);
 //  echo '</pre>';
 ?>
 
@@ -45,10 +45,10 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                 <h3>Nouvelle citation</h3>
                 <form action="../public/index.php?action=pannel" method="post">
                     <div class="form-group">
-                        <textarea  rows="4" class="form-control" name="content" id="content" required>Votre citation</textarea> 
+                        <textarea  rows="4" class="form-control" name="content" id="content" >Votre citation</textarea> 
                     </div>
                     <div class="form-group mb-2">
-                        <input type="text" class="form-control" name="author" id="author" placeholder="L'auteur de la citation">
+                        <input type="text" class="form-control" name="author" id="author" placeholder="L'auteur de la citation" required>
                     </div>
                     <div class="form-check">
                         <input type="checkbox" name="public-check" class="form-check-input" id="public-check">
@@ -57,9 +57,9 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                     <button type="submit" name="newQuote" class="btn btn-info mt-4">Ajouter</button>
                     <div class="mt-4 mb-4" style="height:46px;">
             <?php 
-                if (isset($messageContainer)){
+                if (isset($quoteMessage)){
                     ?>            
-                        <?php echo $messageContainer ?>                
+                        <?php echo $quoteMessage['message'] ?>                
                     <?php
                 }
             ?>

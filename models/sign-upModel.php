@@ -7,17 +7,23 @@ function addUser(){
 
     $loggedAuth = 0;
 
-    if(isset($_POST['registration'])){
-        $prefixe = 'solide96*';
-        $identifiant = htmlspecialchars($_POST['name']);
-        $mail = htmlspecialchars($_POST['email']);
-        $pass = $_POST['password'] . $prefixe;
-        $pass2 = $_POST['password2']. $prefixe;
-        $hashedpass = hash('sha512', $pass);
-        $hashedpass2 = hash('sha512', $pass2);
-        
-
         if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['password2'])){
+
+            function dataValid($userData){
+                $userData = trim($userData);
+                $userData = stripslashes($userData);
+                $userData = htmlspecialchars($userData);
+                return $userData;
+            }
+        
+            if(isset($_POST['registration'])){
+                $prefixe = 'solide96*';
+                $identifiant = dataValid($_POST['name']);
+                $mail = dataValid($_POST['email']);
+                $pass = htmlspecialchars($_POST['password']). $prefixe;
+                $pass2 = htmlspecialchars($_POST['password2']). $prefixe;
+                $hashedpass = hash('sha512', $pass);
+                $hashedpass2 = hash('sha512', $pass2);
             
             $identifiantLength = strlen($identifiant);
             if($identifiantLength <=30){
