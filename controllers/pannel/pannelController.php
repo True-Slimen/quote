@@ -7,7 +7,6 @@ function processRequest(){
         $connectedStatus = connectedStatus(); // from sql
         $connectedStatus = $connectedStatus[0];
         
-
         if(isset($connectedStatus) && $connectedStatus[0] == 1){
 
             $_SESSION['userId'];
@@ -15,6 +14,15 @@ function processRequest(){
 
             if(isset($_POST['newQuote'])){
             addQuote();
+            }
+
+            if(isset($_POST['fillDatabase'])){
+                fillDataBase();
+            }
+
+            if(isset($_POST['dropDatabase'])){
+                echo 'deleter';
+                dropDataBase();
             }
 
             $quoteDatas = [

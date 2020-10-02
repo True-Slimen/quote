@@ -1,5 +1,4 @@
 <?php ?>
-<?php ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-5">
- <a class="navbar-brand" href="index.php?action=home">Citation</a>
+ <a class="navbar-brand" href="index.php?action=home">C!tation ?</a>
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>
  </button>

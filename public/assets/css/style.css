@@ -2,6 +2,7 @@ body{
     background-image: url(../image/full-width-bg.jpg);
     background-attachment: fixed;
     background-position-y: 0px;
+    color: #5c5c5c;
 }
 
 nav a{
@@ -10,12 +11,18 @@ nav a{
 
 h1{
     font-family: 'Eb Garamond';
-    font-weight: 100;
-    color: #5c5c5c;
+    font-weight: 100; 
 }
 
 strong{
     font-weight: bold!important;
+}
+
+.navbar-brand{
+    font-family: 'Eb Garamond';
+    font-size: 48px;
+    font-weight: thin;
+    color: #5c5c5c!important;
 }
 
 .username{

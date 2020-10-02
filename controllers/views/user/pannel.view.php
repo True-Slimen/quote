@@ -3,9 +3,9 @@ include(__DIR__ . ('/../partials/nav.php'));
 
 
 $arrayPersonnalQuote = $quoteDatas['datas'];
-// echo '<pre>';
-// print_r($arrayPersonnalQuote);
-// echo '</pre>';
+//  echo '<pre>';
+//  print_r($arrayPersonnalQuote);
+//  echo '</pre>';
 ?>
 
 <div class="container-fluid">
@@ -67,7 +67,22 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                 </form>
             </div>
             <div class="quote-container col-12 col-md-6">
-                <h3>Vos citations</h3>
+                
+                <?php
+                if($arrayPersonnalQuote[1]== 1){
+                    echo 
+                    '<div class="row justify-content-between px-3 my-2">
+                    <h3>Vos citations</h3>
+                    <form action="../public/index.php?action=pannel" class="col-md-5 col-sm-6 row justify-content-between" method="post">
+                        <button type="submit" value="fillDatabase"  name="fillDatabase" class="btn btn-success col-xs-12">Remplir la base
+                        </button>
+                        <button type="submit" value="dropDatabase"  name="dropDatabase" class="btn btn-danger col-xs-12">Vider la base
+                        </button>
+                    </form>
+                    </div>'
+                    ;
+                }
+                ?>
                 <div class="personnal-quote-frame jumbotron">
                 <?php 
 

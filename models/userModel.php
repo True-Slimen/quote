@@ -15,14 +15,19 @@ function disconnect(){
 function connectedStatus(){
     include(__DIR__ . ('/../src/database/database.php'));
 
-    $userId = $_SESSION['userId'];
+    if(isset($_SESSION['userId'])){
+        $userId = $_SESSION['userId'];
 
-    $getConnectedStatus = $debate->prepare("SELECT connected_status FROM redactor WHERE id = $userId");
+        $getConnectedStatus = $debate->prepare("SELECT connected_status FROM redactor WHERE id = $userId");
 
-    $getConnectedStatus->execute();
-    while($currentStatus = $getConnectedStatus->fetch()){
-        $connectedStatus = $currentStatus;
+        $getConnectedStatus->execute();
+        while($currentStatus = $getConnectedStatus->fetch()){
+            $connectedStatus = $currentStatus;
+        }
+    }else{
+        $connectedStatus = [0];
     }
+    
 
     return $connectedStatus;
 }
