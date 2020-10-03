@@ -24,13 +24,13 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
     <div class=" pannel-container col-12 col-md-10">
         <h1 class="display-4">Bienvenue sur votre pannel
             <?php                 
-                         echo '<strong class="username">';
-                         if(isset($username[0])){
-                            echo $username[0];
-                         }else{
-                             echo $arrayPersonnalQuote[0];
-                         }
-                         echo '</strong>';                  
+                echo '<strong class="username">';
+                if(isset($username[0])){
+                        echo $username[0];
+                }else{
+                        echo $arrayPersonnalQuote[0];
+                    }
+                echo '</strong>';                  
                     ?>
                 </h1>
         <p class="lead">
@@ -86,8 +86,8 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                 <div class="personnal-quote-frame jumbotron">
                 <?php 
 
-                if($arrayPersonnalQuote[1]== 1){
-;                    for($x = 2; $x < count($arrayPersonnalQuote); $x++){
+                if($arrayPersonnalQuote[1]== 1){;                    
+                    for($x = 2; $x < count($arrayPersonnalQuote); $x++){
 
                        $status = $arrayPersonnalQuote[$x]['public'];
                        $quoteId = $arrayPersonnalQuote[$x]['id'];
@@ -108,7 +108,7 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                         <div class="card-body bg-white">
                             <blockquote class="blockquote mb-0">
                             <p>' . $arrayPersonnalQuote[$x][1] . '</p>
-                            <footer class="blockquote-footer"><cite title="Source Title">' . $arrayPersonnalQuote[$x][[2][0]] . '</cite></footer>Partagé par  ' . $arrayPersonnalQuote[$x]['username'] . '
+                            <footer class="blockquote-footer"><cite title="Source Title">' . $arrayPersonnalQuote[$x][[2][0]] . '</cite></footer>Partagée par  ' . $arrayPersonnalQuote[$x]['username'] . '
                             </blockquote>
                         </div>
                     </div><br>'; 

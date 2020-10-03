@@ -24,7 +24,7 @@
               echo '<a class="lien_a" href="index.php?action=pannel"><button class="btn btn-outline-dark btn-animate" type="button">Mon compte</button></a>';  
                
            }else{
-               echo '<a class="lien_a" href="index.php?action=sign-up"><button class="btn btn-outline-dark" type="button">S\'inscrire</button></a>';
+               echo '<a class="lien_a" href="index.php?action=sign-up"><button class="btn btn-outline-dark btn-animate" type="button">S\'inscrire</button></a>';
               echo '<a class="lien_a" href="index.php?action=sign-in"><button class="btn btn-outline-dark btn-animate" type="button">Se connecter</button></a>';
           }    
       ?>

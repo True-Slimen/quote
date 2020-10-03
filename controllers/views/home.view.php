@@ -21,7 +21,7 @@ include(__DIR__ . ('/../views/partials/nav.php'));
                        '<div class="card mt-2 mb-2 blur-bg">
                   
                         <div class="card-header ml-0 mr-0 row justify-content-between">
-                            <h4 class="col-12">Citation partagé par '. $viewDatas['datas'][$i]['username'] .'</h4>
+                            <h4 class="col-12">Citation partagée par '. $viewDatas['datas'][$i]['username'] .'</h4>
                         
                         </div>
                         <div class="card-body bg-white">

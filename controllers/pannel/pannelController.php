@@ -7,7 +7,7 @@ function processRequest(){
         $connectedStatus = connectedStatus(); // from sql
         $connectedStatus = $connectedStatus[0];
         
-        if(isset($connectedStatus) && $connectedStatus[0] == 1){
+        if(isset($connectedStatus) || $connectedStatus[0] == 1){
 
             $_SESSION['userId'];
             $username = manageQuote();

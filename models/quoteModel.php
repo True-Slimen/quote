@@ -220,6 +220,7 @@ function publicQuote(){
     FROM public_quote
     JOIN quote ON public_quote.quote_id = quote.id
     JOIN redactor ON quote.redactor_id = redactor.id
+    ORDER BY quote.id DESC
     ");
     
         $getPublicQuote->execute();

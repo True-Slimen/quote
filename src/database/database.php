@@ -14,8 +14,7 @@ try{
 
 }catch(PDOException $e){
     echo "Erreur : " . $e->getMessage();
-    header("Location: ../index.php?action=page404");
-    exit;
+    die();
 }
 
 if(isset($debate)){
