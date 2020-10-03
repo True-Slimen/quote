@@ -40,7 +40,7 @@ include(__DIR__ . ('/../views/partials/nav.php'));
             </form>
         </div>
         <div class="col-md-6 col-sm-12">
-            <h2>4 bonnes raison de vous inscrire</h2>
+            <h2>4 bonnes raisons de vous inscrire</h2>
             <ul>
                 <li class="mt-3">
                     <i>"L'important c'est de participer"</i>

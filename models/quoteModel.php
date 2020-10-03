@@ -160,13 +160,14 @@ function fillDataBase(){
         ],
     ];  
 
+    $sql = $debate->prepare("INSERT INTO redactor(username, mail, password) VALUES(?, ?, ?)");
     
     for($i = 0; $i < count($arrayUserFixtures); $i++){
 
         $pass = $arrayUserFixtures[$i]['pass'] . 'solide96*';
         $hashedpass = hash('sha512', $pass);
 
-        $sql = $debate->prepare("INSERT INTO redactor(username, mail, password) VALUES(?, ?, ?)");
+        
         $sql->execute(array(
             $arrayUserFixtures[$i]['identifiant'],
             $arrayUserFixtures[$i]['mail'],

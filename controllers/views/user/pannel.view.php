@@ -14,11 +14,11 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
     <div class="col-3 col-sm-2 border pl-0 pr-0 user-menu">
         
         <div class="user-nav-sticky">
-            <button type="button" class="btn btn-info col-12 first-user-btn">Button</button>
+            <button type="button" class="btn btn-info col-12 first-user-btn">Ajouter</button>
             <hr class="ml-auto mr-auto mt-0 mb-0">
-            <button type="button" class="btn btn-info col-12 second-user-btn">Button</button>
+            <button type="button" class="btn btn-info col-12 second-user-btn">Modifer</button>
             <hr class="ml-auto mr-auto mt-0 mb-0">
-            <button type="button" class="btn btn-info col-12 third-user-btn">Button</button>
+            <button type="button" class="btn btn-info col-12 third-user-btn">Option</button>
         </div>
     </div>
     <div class=" pannel-container col-12 col-md-10">
@@ -72,7 +72,7 @@ $arrayPersonnalQuote = $quoteDatas['datas'];
                 if($arrayPersonnalQuote[1]== 1){
                     echo 
                     '<div class="row justify-content-between px-3 my-2">
-                    <h3>Vos citations</h3>
+                    <h3>Toutes les citations</h3>
                     <form action="../public/index.php?action=pannel" class="col-md-5 col-sm-6 row justify-content-between" method="post">
                         <button type="submit" value="fillDatabase"  name="fillDatabase" class="btn btn-success col-xs-12">Remplir la base
                         </button>
